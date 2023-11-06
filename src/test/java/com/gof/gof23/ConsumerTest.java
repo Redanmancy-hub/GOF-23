@@ -4,6 +4,9 @@ import com.gof.gof23.abstractFactory.HuaweiFactory;
 import com.gof.gof23.abstractFactory.IPhoneProduct;
 import com.gof.gof23.abstractFactory.IRouterProduct;
 import com.gof.gof23.abstractFactory.XiaomiFactory;
+import com.gof.gof23.builder.Director;
+import com.gof.gof23.builder.Product;
+import com.gof.gof23.builder.Worker;
 import com.gof.gof23.factory.method.Car;
 import com.gof.gof23.factory.method.TeslaFactory;
 import com.gof.gof23.factory.method.WuLingFactory;
@@ -71,5 +74,18 @@ public class ConsumerTest extends Gof23ApplicationTests{
         iRouterProduct2.shutdown();
         iRouterProduct2.setting();
         iRouterProduct2.openwifi();
+    }
+
+    /**
+     * 建造者模式
+     */
+    @Test
+    public void test4(){
+        // 指挥者
+        Director director = new Director();
+        // 指挥 具体的工人完成 产品
+        Product build = director.build(new Worker());
+        System.out.println(build.toString());
+
     }
 }
