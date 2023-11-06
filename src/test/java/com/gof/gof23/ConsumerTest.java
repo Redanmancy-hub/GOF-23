@@ -4,9 +4,10 @@ import com.gof.gof23.abstractFactory.HuaweiFactory;
 import com.gof.gof23.abstractFactory.IPhoneProduct;
 import com.gof.gof23.abstractFactory.IRouterProduct;
 import com.gof.gof23.abstractFactory.XiaomiFactory;
-import com.gof.gof23.builder.Director;
-import com.gof.gof23.builder.Product;
-import com.gof.gof23.builder.Worker;
+import com.gof.gof23.builder.demo1.Director;
+import com.gof.gof23.builder.demo1.Product;
+import com.gof.gof23.builder.demo1.Worker;
+
 import com.gof.gof23.factory.method.Car;
 import com.gof.gof23.factory.method.TeslaFactory;
 import com.gof.gof23.factory.method.WuLingFactory;
@@ -40,52 +41,5 @@ public class ConsumerTest extends Gof23ApplicationTests{
 
         Car car1 = new TeslaFactory().getCar();
         car1.name();
-    }
-
-    /**
-     * 抽象工厂客服端
-     */
-    @Test
-    public void test3(){
-        System.out.println("---------小米工厂---------");
-        XiaomiFactory xiaomiFactory = new XiaomiFactory();
-        IPhoneProduct iPhoneProduct = xiaomiFactory.iPhoneProduct();
-        iPhoneProduct.start();
-        iPhoneProduct.shutdown();
-        iPhoneProduct.sendSMS();
-        iPhoneProduct.callup();
-
-        IRouterProduct iRouterProduct = xiaomiFactory.iRouterProduct();
-        iRouterProduct.start();
-        iRouterProduct.shutdown();
-        iRouterProduct.setting();
-        iRouterProduct.openwifi();
-
-        System.out.println("---------华为工厂---------");
-        HuaweiFactory huaweiFactory = new HuaweiFactory();
-        IPhoneProduct iPhoneProduct1 = huaweiFactory.iPhoneProduct();
-        iPhoneProduct1.start();
-        iPhoneProduct1.shutdown();
-        iPhoneProduct1.sendSMS();
-        iPhoneProduct1.callup();
-
-        IRouterProduct iRouterProduct2 = huaweiFactory.iRouterProduct();
-        iRouterProduct2.start();
-        iRouterProduct2.shutdown();
-        iRouterProduct2.setting();
-        iRouterProduct2.openwifi();
-    }
-
-    /**
-     * 建造者模式
-     */
-    @Test
-    public void test4(){
-        // 指挥者
-        Director director = new Director();
-        // 指挥 具体的工人完成 产品
-        Product build = director.build(new Worker());
-        System.out.println(build.toString());
-
     }
 }
